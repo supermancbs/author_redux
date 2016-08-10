@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Author from './Author'
+import DisplayBooks from './DisplayBooks'
 
 const DisplayAuthors = class extends Component {
 
   render(){
     var authors = this.props.authors.map((author, index) => {
-      return <Author key={index} name={author.name}/>
+      return (
+        <div>
+          <Author name={author.name}/>
+          <DisplayBooks authorID={author.id}/>
+        </div>
+      )
     })
-    debugger
+
     return (
       <div>
         <ul>
@@ -19,12 +25,12 @@ const DisplayAuthors = class extends Component {
   }
 }
 
-function MapStateToProps(state){
+function mapStateToProps(state) {
   return {
     authors: state.authors
   }
 }
 
-const SmartDisplayAuthors = connect(MapStateToProps)(DisplayAuthors)
+const SmartDisplayAuthors = connect(mapStateToProps)(DisplayAuthors)
 
 export default SmartDisplayAuthors

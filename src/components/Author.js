@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Author = ({name, key}) => {
-  debugger
-  return null
+const Author = ({name}) => {
+  
+  return (
+    <li>{name}</li>
+  )
 }
 
 export default Author

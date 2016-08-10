@@ -1,8 +1,10 @@
-const Authors = (state = [{name: "", key: -1}], action) => {
-  switch(action.type){
+var authorCounter = 0
+
+const Authors = (state = [], action) => {
+  switch(action.type) {
     case 'ADD_AUTHOR':
       var newState = [].concat(state)
-      newState.push({name: action.name})
+      newState.push({id: ++authorCounter, name: action.name})
       return newState
     default:
       return state
